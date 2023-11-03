@@ -1,0 +1,146 @@
+:root{
+
+    --clr-neutral-900:hsl(207,19%,9%);
+    --clr-neutral-100:hsl(0,0%,100%);
+    --clr-accent-400:hsl(142,90%,61%);
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+    /* display: grid;
+    min-height: 100vh;
+    place-items:center; */
+    line-height: 1,6;
+    background:var(--clr-neutral-900);
+    font-family: sans-serif;
+}
+.card{
+    color:var(--clr-neutral-100);
+    /* background-image:url('../../../public/landscape.jpg'); */
+    background-size:cover;
+    /* background-color: rgb(245, 242, 242); */
+    padding: 10rem 0  0;
+    display: flex;
+    flex-direction: row;
+    border-radius:.5rem;
+    overflow: hidden;
+    transition: transform 100ms ease;
+}
+
+
+
+.card:hover,
+.card:focus-within{
+    transform: scale(1.02);
+}
+
+.card-content{
+    /* local variable padding */
+    --padding:1rem;
+    padding-top:0.5rem;
+    padding-right:var(--padding);
+    padding-left:var(--padding);
+    padding-bottom:var(1.3rem);
+    align-self: flex-end;
+    width:100%;
+    background: linear-gradient(
+        hsl(0  0% 0% / 0),
+        hsl(20 0% 0% / 0.7) 50%,
+        hsl(0  0% 0% / 1)
+        
+    );
+  
+}
+
+
+
+.card:hover .card-content > *:not(.card-title){
+    opacity: 1;
+}
+
+
+
+.card-title{
+    position:relative;
+    width:max-content;
+    max-width: 100%;
+    
+
+}
+
+.card-title::after{
+    content:"";
+    position: absolute;
+    height: 3px;
+    left:calc(var(--padding)*-1);
+    bottom:-2px;
+    width:calc(100% + var(--padding));
+    background: var(--clr-accent-400);
+    transform-origin: left;
+    transition:transform 200ms ease;
+}
+
+.card:hover .card-title::after,
+.card:focus-within .card-title::after{
+    transform:scaleX(1);
+}
+
+.card-body{
+    color:rgb(255 255 255 / 0.85);
+}
+.button{
+    cursor:pointer;
+    display:inline;
+    text-decoration:none;
+    color:var(--clr-neutral-900);
+    background-color:var(--clr-accent-400);
+    padding:0.5rem 1.25rem;
+    border-radius: .25rem;
+}
+
+.button:hover,
+.button:focus{
+    background-color: var(--clr-neutral-100);
+    
+}
+@media(hover){
+    .card-content {
+        transform: translateY(50%);
+        transition: transform 500ms ease;
+        
+    }
+    .card:hover .card-content,
+.card:focus-within .card-content{
+    transform: translateY(0);
+    transition-delay:200ms;
+}
+
+.card:focus-within .card-content{
+    transition-duration:0ms;
+}
+
+
+.card-content > *:not(.card-title),
+.card:focus-within .card-content>*:not(.card-title){
+    opacity: 0;
+    transition: opacity 500ms linear;
+}
+.card-title::after{
+    transform: scaleX(0);
+
+}
+
+
+}
+@media (max-width:645px) {
+    .card{
+       justify-self: center;
+       height: 80%;
+       width: 100%;
+    }
+}

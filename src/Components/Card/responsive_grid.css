@@ -1,0 +1,33 @@
+:root{
+    --ff-primary:Heebo, sans-serif;
+    --ff-secondary: Bungee,cursive;
+    --ff-accent: Bungee Shade,cursive;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(17rem, 1fr)) ;
+    /* grid-template-columns:1fr 1fr 1fr ; */
+    gap: 0.6rem;
+    margin:2rem;
+
+}
+
+.card{
+    /* justify-self: center; */
+    border:2px solid rgb(82, 70, 76);
+    aspect-ratio:1/1;
+}
+
+@media(min-width:50rem){
+    .featured{
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+    .featured>.card-content{
+        padding-top:0rem;
+       
+    }
+}
+
+
